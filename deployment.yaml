@@ -18,9 +18,19 @@ spec:
       containers:
       - name: webirc
         image: ghcr.io/thelounge/thelounge:latest
+        env:
+          - name: ADMIN_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: webirc-secret
+                key: ADMIN_PASSWORD
         volumeMounts:
         - name: data
           mountPath: /var/opt/thelounge
+        lifecycle:
+          exec:
+            command:
+              - "thelounge add ryzen --password $ADMIN_PASSWORD"
       volumes:
       - name: data
         persistentVolumeClaim:
