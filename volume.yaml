@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: webirc-data
+  namespace: webirc
+  labels:
+    app: webirc-data
+spec:
+  storageClassName: retain
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Gi

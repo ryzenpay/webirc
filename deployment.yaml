@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webirc
+  namespace: webirc
+  labels:
+    app: webirc
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dwebircd
+  template:
+    metadata:
+      labels:
+        app: webirc
+    spec:
+      containers:
+      - name: webirc
+        image: ghcr.io/thelounge/thelounge:latest
+        volumeMounts:
+        - name: data
+          mountPath: /var/opt/thelounge
+      volumes:
+      - name: data
+        persistentVolumeClaim:
+          claimName: webirc-data
