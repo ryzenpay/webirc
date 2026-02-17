@@ -33,7 +33,8 @@ spec:
               - thelounge
               - add
               - ryzen
-              - --password $ADMIN_PASSWORD
+              - --password
+              - $ADMIN_PASSWORD
       volumes:
       - name: data
         persistentVolumeClaim:
