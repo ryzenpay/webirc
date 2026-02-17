@@ -28,12 +28,10 @@ spec:
         - name: data
           mountPath: /var/opt/thelounge
         lifecycle:
-          exec:
-            command:
-              - "/bin/sh"
-              - "-c"
-              - |
-                thelounge add ryzen --password $ADMIN_PASSWORD
+          postStart:
+            exec:
+              command:
+                - "thelounge add ryzen --password $ADMIN_PASSWORD"
       volumes:
       - name: data
         persistentVolumeClaim:
