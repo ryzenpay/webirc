@@ -31,7 +31,10 @@ spec:
           postStart:
             exec:
               command:
-                - "thelounge add ryzen --password $ADMIN_PASSWORD"
+                - "/bin/sh"
+                - "-c"
+                - |
+                  thelounge add ryzen --password $ADMIN_PASSWORD
       volumes:
       - name: data
         persistentVolumeClaim:
