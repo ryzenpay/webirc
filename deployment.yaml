@@ -30,7 +30,10 @@ spec:
         lifecycle:
           exec:
             command:
-              - "thelounge add ryzen --password $ADMIN_PASSWORD"
+              - thelounge
+              - add
+              - ryzen
+              - --password $ADMIN_PASSWORD
       volumes:
       - name: data
         persistentVolumeClaim:
